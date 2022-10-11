@@ -6,10 +6,10 @@ const getAllMessages = async (req, res) => {
 };
 
 const createNewMessage = async (req, res) => {
-  const { title, body, user } = req.body;
+  const { title, body, author } = req.body;
 
   try {
-    await Message.create({ title, body, user });
+    await Message.create({ title, body, author });
     const allMessages = await Message.find();
     res.status(201).json(allMessages);
   } catch {
@@ -24,7 +24,7 @@ const updateMessage = async (req, res) => {
 
   if (req.body.body) existingMessage.body = req.body.body;
 
-  if (req.body.user) existingMessage.user = req.body.user;
+  if (req.body.author) existingMessage.author = req.body.author;
 
   await existingMessage.save();
   const allMessages = await Message.find();
