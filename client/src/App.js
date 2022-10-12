@@ -8,17 +8,21 @@ function App() {
   useEffect(() => {
     axios
       .get("http://localhost:3500/")
-      .then((response) => setMessages(response.data));
+      .then((response) => setMessages(response.data))
+      .catch((err) => console.error(err));
   }, []);
-  console.log(messages);
+
+  const deleteMessage = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:3500/${id}`);
+      setMessages(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const allMessages = messages.map((msg) => (
-    <Message
-      key={msg._id}
-      title={msg.title}
-      body={msg.body}
-      author={msg.author}
-    />
+    <Message key={msg._id} {...msg} deleteMessage={deleteMessage} />
   ));
 
   return (

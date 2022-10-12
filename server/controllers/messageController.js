@@ -37,10 +37,10 @@ const deleteMessage = async (req, res) => {
   // await Message.deleteOne({ id });
   // const allMessages = await Message.find();
   // res.json(allMessages);
-  const { id } = req.body;
+  const { id } = req.params;
   if (!id) return res.status(400).json({ message: "Id is required" });
 
-  const idExist = await Message.findById(req.body.id);
+  const idExist = await Message.findById(id);
   if (!idExist) {
     return res.status(400).json({ message: "No message found" });
   }
