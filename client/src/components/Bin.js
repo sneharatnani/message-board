@@ -1,4 +1,15 @@
-export default function Bin({ _id, deleteMessage }) {
+import axios from "axios";
+
+export default function Bin({ _id, setMessages }) {
+  const deleteMessage = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:3500/${id}`);
+      setMessages(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <button className="bin" onClick={() => deleteMessage(_id)}>
       <svg

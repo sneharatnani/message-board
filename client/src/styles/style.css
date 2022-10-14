@@ -35,9 +35,6 @@ main {
   font-weight: bold;
   width: 100%;
   transition: all 300ms;
-  display: block;
-  text-decoration: none;
-  text-align: center;
 }
 
 .new-msg:hover {
@@ -133,17 +130,22 @@ main {
 }
 
 /* message form */
-form {
+.modal {
   box-shadow: 0px 1px 5px 0px #8080804d;
   border-radius: 7px;
   width: 20rem;
-  margin: 3rem auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   justify-content: center;
   align-items: center;
   padding: 2rem 0;
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .input-container {
@@ -183,7 +185,7 @@ textarea {
   border-radius: 7px;
 }
 
-form button {
+.modal button {
   width: 18rem;
   border-radius: 7px;
   border: 1px solid #2ec4b6;
@@ -193,12 +195,25 @@ form button {
   font-weight: bold;
 }
 
+/* overlay */
+.overlay {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000075;
+}
+
 @media screen and (min-width: 601px) {
-  form {
+  .modal {
     width: 35rem;
   }
 
-  form button,
+  .modal button,
   .input-container {
     width: 30rem;
   }

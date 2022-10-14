@@ -13,7 +13,7 @@ export default function Message(props) {
         </p>
         <div className="icon-container">
           <Bin {...props} />
-          <Pencil />
+          <Pencil {...props} />
         </div>
       </div>
     </div>
