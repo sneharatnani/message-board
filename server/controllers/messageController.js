@@ -1,7 +1,7 @@
 const Message = require("../model/Message.js");
 
 const getAllMessages = async (req, res) => {
-  const allMessages = await Message.find();
+  const allMessages = await Message.find().sort({ updatedAt: -1 });
   res.json(allMessages);
 };
 
@@ -10,7 +10,7 @@ const createNewMessage = async (req, res) => {
 
   try {
     await Message.create({ title, body, username });
-    const allMessages = await Message.find();
+    const allMessages = await Message.find().sort({ updatedAt: -1 });
     res.status(201).json(allMessages);
   } catch {
     res.sendStatus(500);
@@ -27,16 +27,11 @@ const updateMessage = async (req, res) => {
   if (req.body.username) existingMessage.username = req.body.username;
 
   await existingMessage.save();
-  const allMessages = await Message.find();
+  const allMessages = await Message.find().sort({ updatedAt: -1 });
   res.json(allMessages);
 };
 
 const deleteMessage = async (req, res) => {
-  // const { id } = req.body;
-  // if (!id) return res.sendStatus(400);
-  // await Message.deleteOne({ id });
-  // const allMessages = await Message.find();
-  // res.json(allMessages);
   const { id } = req.params;
   if (!id) return res.status(400).json({ message: "Id is required" });
 
@@ -45,7 +40,7 @@ const deleteMessage = async (req, res) => {
     return res.status(400).json({ message: "No message found" });
   }
   await Message.deleteOne({ _id: id });
-  const allMessages = await Message.find();
+  const allMessages = await Message.find().sort({ updatedAt: -1 });
   res.json(allMessages);
 };
 
