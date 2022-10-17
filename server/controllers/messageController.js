@@ -1,17 +1,22 @@
 const Message = require("../model/Message.js");
 
 const getAllMessages = async (req, res) => {
-  const allMessages = await Message.find().sort({ updatedAt: -1 });
-  res.json(allMessages);
+  // const allMessages = await Message.find().sort({ updatedAt: -1 });
+  const allMessages = await Message.find()
+    .limit(req.query.limit)
+    .skip(req.query.skip)
+    .sort({ updatedAt: -1 });
+  const numberOfDocs = await Message.countDocuments();
+  res.json({ allMessages, numberOfDocs });
 };
 
 const createNewMessage = async (req, res) => {
   const { title, body, username } = req.body;
 
   try {
-    await Message.create({ title, body, username });
-    const allMessages = await Message.find().sort({ updatedAt: -1 });
-    res.status(201).json(allMessages);
+    const newMessage = { title, body, username };
+    await Message.create(newMessage);
+    res.status(201).json(newMessage);
   } catch {
     res.sendStatus(500);
   }
@@ -26,9 +31,8 @@ const updateMessage = async (req, res) => {
 
   if (req.body.username) existingMessage.username = req.body.username;
 
-  await existingMessage.save();
-  const allMessages = await Message.find().sort({ updatedAt: -1 });
-  res.json(allMessages);
+  const result = await existingMessage.save();
+  res.json(result);
 };
 
 const deleteMessage = async (req, res) => {
@@ -39,9 +43,8 @@ const deleteMessage = async (req, res) => {
   if (!idExist) {
     return res.status(400).json({ message: "No message found" });
   }
-  await Message.deleteOne({ _id: id });
-  const allMessages = await Message.find().sort({ updatedAt: -1 });
-  res.json(allMessages);
+  const result = await Message.deleteOne({ _id: id });
+  res.json(result);
 };
 
 module.exports = {

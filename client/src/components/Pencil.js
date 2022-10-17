@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Modal from "./Modal.js";
 import axios from "axios";
+import useMessage from "../hooks/useMessage.js";
 
 export default function Pencil(props) {
-  const { _id, setMessages, title, body, username } = props;
+  const { _id, setMessages, setTotalDocs, title, body, username } = props;
 
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({
@@ -11,15 +12,16 @@ export default function Pencil(props) {
     body,
     username,
   });
+  const { getMessages } = useMessage(setMessages, setTotalDocs);
 
   const editMessage = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("http://localhost:3500", {
+      await axios.put("http://localhost:3500", {
         ...values,
         id: _id,
       });
-      await setMessages(response.data);
+      getMessages();
       setOpen(false);
     } catch (err) {
       console.error(err);
