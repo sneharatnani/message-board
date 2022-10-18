@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Message from "./components/Message.js";
 import NewMsgBtn from "./components/NewMsgBtn.js";
 import useMessage from "./hooks/useMessage.js";
@@ -42,12 +41,13 @@ function App() {
       <main>
         <NewMsgBtn setMessages={setMessages} setTotalDocs={setTotalDocs} />
         <div>{messageComponents}</div>
-        {hasDocs ? (
-          <button onClick={() => loadMoreMessages(2, messages.length)}>
+        {hasDocs && (
+          <button
+            className="load-more-btn"
+            onClick={() => loadMoreMessages(2, messages.length)}
+          >
             Load more
           </button>
-        ) : (
-          <p>it is end</p>
         )}
       </main>
     </div>

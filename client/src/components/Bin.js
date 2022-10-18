@@ -4,9 +4,11 @@ export default function Bin({ _id, setMessages }) {
   const deleteMessage = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:3500/${id}`);
-      setMessages(response.data);
+      setMessages((prevMsg) =>
+        prevMsg.filter((msg) => msg._id !== response.data.id)
+      );
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   };
 

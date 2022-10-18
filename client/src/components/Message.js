@@ -12,7 +12,7 @@ export default function Message(props) {
           By <span>{username}</span>
         </p>
         <div className="icon-container">
-          <Bin {...props} />
+          <Bin _id={props._id} setMessages={props.setMessages} />
           <Pencil {...props} />
         </div>
       </div>

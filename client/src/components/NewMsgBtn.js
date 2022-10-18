@@ -16,8 +16,13 @@ export default function NewMsgBtn({ setMessages, setTotalDocs }) {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3500", { ...values });
-      getMessages();
-      setOpen(false);
+      await getMessages();
+      await setOpen(false);
+      setValues({
+        title: "",
+        body: "",
+        username: "",
+      });
     } catch (err) {
       console.error(err);
     }

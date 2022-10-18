@@ -17,11 +17,13 @@ export default function Pencil(props) {
   const editMessage = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:3500", {
+      const response = await axios.put("http://localhost:3500", {
         ...values,
         id: _id,
       });
-      getMessages();
+      if (response.data.updatedAt !== props.updatedAt) {
+        getMessages();
+      }
       setOpen(false);
     } catch (err) {
       console.error(err);

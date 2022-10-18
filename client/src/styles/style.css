@@ -23,21 +23,34 @@ main {
   margin: auto;
 }
 
-.new-msg {
+.new-msg,
+.load-more-btn {
   border: 2px solid #ff9f1c;
-  margin: 1.5rem 0;
   background: transparent;
-  font-size: 1.2rem;
   text-transform: capitalize;
-  padding: 9px 0;
   color: #ff9f1c;
   border-radius: 7px;
-  font-weight: bold;
-  width: 100%;
   transition: all 300ms;
 }
 
-.new-msg:hover {
+.new-msg {
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+  padding: 9px 0;
+  font-weight: bold;
+  width: 100%;
+}
+
+.load-more-btn {
+  display: block;
+  margin: 0 auto;
+  width: 8rem;
+  font-size: 1rem;
+  padding: 6px 0;
+}
+
+.new-msg:hover,
+.load-more-btn:hover {
   background-color: #ff9f1c;
   color: white;
 }
