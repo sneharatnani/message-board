@@ -12,6 +12,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: #011627e6;
+}
+
 .header {
   background-color: #2ec4b6;
   padding: 1rem 0;
@@ -43,7 +47,7 @@ main {
 
 .load-more-btn {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
   width: 8rem;
   font-size: 1rem;
   padding: 6px 0;
@@ -143,6 +147,14 @@ main {
 }
 
 /* message form */
+
+.loader,
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .modal {
   box-shadow: 0px 1px 5px 0px #8080804d;
   border-radius: 7px;
@@ -153,18 +165,15 @@ main {
   justify-content: center;
   align-items: center;
   padding: 2rem 0;
-  position: absolute;
   background-color: white;
   z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .input-container {
   width: 18rem;
   border: 1px solid #2ec4b6;
   border-radius: 7px;
+  margin-top: 1.2rem;
 }
 
 input,
@@ -208,6 +217,34 @@ textarea {
   font-weight: bold;
 }
 
+.modal svg {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+/* footer */
+footer {
+  padding: 1.5rem 0;
+}
+
+footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.heart {
+  color: red;
+  font-size: 1.3rem;
+}
+
+footer a:hover {
+  color: #009688;
+}
+
 /* overlay */
 .overlay {
   position: fixed;
@@ -221,7 +258,11 @@ textarea {
   background-color: #00000075;
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 701px) {
+  main {
+    width: 40rem;
+  }
+
   .modal {
     width: 35rem;
   }
@@ -229,11 +270,5 @@ textarea {
   .modal button,
   .input-container {
     width: 30rem;
-  }
-}
-
-@media screen and (min-width: 701px) {
-  main {
-    width: 40rem;
   }
 }

@@ -1,6 +1,15 @@
+import Close from "./Close.js";
+
 export default function Modal(props) {
-  const { title, body, username, createNewMessage, editMessage, setValues } =
-    props;
+  const {
+    title,
+    body,
+    username,
+    createNewMessage,
+    closeModal,
+    editMessage,
+    setValues,
+  } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -10,6 +19,7 @@ export default function Modal(props) {
   return (
     <>
       <form className="modal" onSubmit={editMessage || createNewMessage}>
+        <Close closeModal={closeModal} />
         <div className="input-container">
           <input
             placeholder="Title"

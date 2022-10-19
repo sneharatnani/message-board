@@ -1,12 +1,14 @@
 import axios from "axios";
 
-export default function Bin({ _id, setMessages }) {
+export default function Bin({ _id, setMessages, setLoading }) {
   const deleteMessage = async (id) => {
+    setLoading(true);
     try {
       const response = await axios.delete(`http://localhost:3500/${id}`);
-      setMessages((prevMsg) =>
+      await setMessages((prevMsg) =>
         prevMsg.filter((msg) => msg._id !== response.data.id)
       );
+      setLoading(false);
     } catch (err) {
       console.error(err.message);
     }
