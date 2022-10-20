@@ -1,4 +1,4 @@
-import Close from "./Close.js";
+import CloseIcon from "./icons/CloseIcon.js";
 
 export default function Modal(props) {
   const {
@@ -19,7 +19,7 @@ export default function Modal(props) {
   return (
     <>
       <form className="modal" onSubmit={editMessage || createNewMessage}>
-        <Close closeModal={closeModal} />
+        <CloseIcon closeModal={closeModal} />
         <div className="input-container">
           <input
             placeholder="Title"

@@ -10,7 +10,6 @@ function App() {
   const [hasDocs, setHasDocs] = useState(true);
   // for spinner
   let [loading, setLoading] = useState(true);
-  console.log(totalDocs);
 
   useEffect(() => {
     getMessages();
@@ -26,7 +25,7 @@ function App() {
 
   async function getMessages() {
     try {
-      const response = await axios.get("http://localhost:3500/", {
+      const response = await axios.get(process.env.REACT_APP_SERVER_URL, {
         params: {
           skip: 0,
           limit: 5,
@@ -43,7 +42,7 @@ function App() {
   async function loadMoreMessages(limit, skip) {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3500/", {
+      const response = await axios.get(process.env.REACT_APP_SERVER_URL, {
         params: {
           limit,
           skip,

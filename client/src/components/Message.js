@@ -1,5 +1,5 @@
 import Bin from "./Bin.js";
-import Pencil from "./Pencil.js";
+import Edit from "./Edit.js";
 
 export default function Message(props) {
   const { title, body, username } = props;
@@ -13,7 +13,7 @@ export default function Message(props) {
         </p>
         <div className="icon-container">
           <Bin {...props} />
-          <Pencil {...props} />
+          <Edit {...props} />
         </div>
       </div>
     </div>

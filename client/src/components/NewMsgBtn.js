@@ -14,7 +14,7 @@ export default function NewMsgBtn({ setLoading, getMessages }) {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:3500", { ...values });
+      await axios.post(process.env.REACT_APP_SERVER_URL, { ...values });
       await setOpen(false);
       getMessages();
     } catch (err) {

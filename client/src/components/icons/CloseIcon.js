@@ -1,4 +1,4 @@
-export default function Close({ closeModal }) {
+export default function CloseIcon({ closeModal }) {
   return (
     <svg
       onClick={closeModal}

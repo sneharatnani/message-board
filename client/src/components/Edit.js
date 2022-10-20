@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Modal from "./Modal.js";
 import axios from "axios";
+import PencilIcon from "./icons/PencilIcon.js";
 
-export default function Pencil(props) {
+export default function Edit(props) {
   const { _id, getMessages, title, body, username, setLoading } = props;
 
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Pencil(props) {
         username !== values.username
       ) {
         await setLoading(true);
-        await axios.put("http://localhost:3500", {
+        await axios.put(process.env.REACT_APP_SERVER_URL, {
           ...values,
           id: _id,
         });
@@ -46,21 +47,7 @@ export default function Pencil(props) {
   return (
     <>
       <button className="pencil" onClick={() => setOpen(true)}>
-        <svg
-          className="pencilIcon"
-          fill="none"
-          strokeWidth="0"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Edit</title>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-          ></path>
-        </svg>
+        <PencilIcon />
       </button>
       {open && (
         <Modal
