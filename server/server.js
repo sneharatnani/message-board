@@ -3,22 +3,19 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const connectDB = require("./config/db.js");
-
 const app = express();
 const PORT = process.env.PORT || 3500;
 
-// connect to mongoDB
 connectDB();
-app.use(cors());
 
 // middleware
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // routes
 app.use("/", require("./routes/messages.js"));
 
-// catch all
 app.all("*", (req, res) => {
   res.sendStatus(404);
 });

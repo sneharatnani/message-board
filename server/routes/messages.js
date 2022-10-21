@@ -9,7 +9,6 @@ const {
 const router = express.Router();
 
 router.route("/").get(getAllMessages).post(createNewMessage).put(updateMessage);
-// .delete(deleteMessage);
 
 router.delete("/:id", deleteMessage);
 
