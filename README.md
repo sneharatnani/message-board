@@ -1,23 +1,21 @@
 # Message Board
 
-It is a basic full-stack application created mainly to practice MERN stack. Client is deployed on [Netlify](https://www.netlify.com/) and server is deployed on [Render](https://render.com/).
+![img](./client/src/assets/message-board.png)
 
-:point_right: See it live [here](https://message-board-top.netlify.app/)
+It is a full-stack web app where everyone can post new messages and see messages written by others. I created this project mainly to practice the MERN stack.
 
-## features
+:point_right: **See it live [here](https://message-board-top.netlify.app/)**
 
-- You can create, update, and delete messages.
+## Features
 
-- Stores messages in MongoDB database.
-
+- User can create, read, update, and delete messages.
+- Fully responsive design.
 - Pagination to load more messages.
 
-## Tech-Stack
+## Technologies Used
 
-- React.js
-
-- Node.js
-
-- Express.js
-
-- MongoDB
+- [React](https://reactjs.org/)
+- [NodeJS](https://nodejs.org/)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
